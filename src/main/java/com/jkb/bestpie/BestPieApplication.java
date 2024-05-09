@@ -9,7 +9,7 @@ public class BestPieApplication {
     public static void main(String[] args) {
 
         SpringApplication.run(BestPieApplication.class, args);
-        System.out.println("Hello World!");
+
     }
 
 }
