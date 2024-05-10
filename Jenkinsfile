@@ -67,7 +67,7 @@ pipeline {
                                 sh "sudo chmod 777 ${directoryPath}"
                                 sh "cp build/libs/*.jar ${directoryPath}/${env.jarfile}.jar"
                                 echo "Restart best_pi API"
-                                sh "${directoryPath}/bin/best_pie.sh restart"
+                                sh "sudo ${directoryPath}/bin/best_pie.sh restart"
                             } catch (e) {
                                 slackSend (channel: SLACK_CHANNEL, color: '#FF0000', message: "빌드 실패: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
                             }
