@@ -1,9 +1,11 @@
 package com.jkb.bestpie.api.domain.board.controller;
 
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/v1/")
 public class BoardController {
 
-    public void Hello(){
-        System.out.println("Hello world");
-        System.out.println("Hello world");
-    }
+
 }
