@@ -1,7 +1,6 @@
 package com.jkb.bestpie.api.domain.scrap.Entity;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
