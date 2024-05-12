@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Table(name = "COMMUNITY")
 @Getter @Setter @NoArgsConstructor
 public class Community {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "community_id")
     private Long id;
 
