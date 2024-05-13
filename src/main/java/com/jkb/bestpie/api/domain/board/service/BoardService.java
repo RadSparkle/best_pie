@@ -18,7 +18,12 @@ public class BoardService {
         return boardRepository.findAll();
     }
 
-
+    public String postBoard(Board board) {
+        // 게시글을 저장하고 저장된 게시글의 ID를 반환합니다.
+        Board savedBoard = boardRepository.save(board);
+        // 저장된 엔티티의 ID를 추출하여 반환합니다.
+        return "Board saved with ID: " + savedBoard.getId();
+    }
 
 
 }
