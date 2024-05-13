@@ -1,18 +1,28 @@
 package com.jkb.bestpie.api.domain.board.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.jkb.bestpie.api.domain.board.entity.Board;
+import com.jkb.bestpie.api.domain.board.service.BoardService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
+@RequiredArgsConstructor
 public class BoardController {
 
-@GetMapping("/board")
-    public String getBoard(){
+    private final BoardService boardService;
 
-    return "test";
-}
+    @GetMapping(value = "/board")
+    public List<Board> getBoard() {
+        return boardService.getBoards();
+    }
 
+    @PostMapping(value = "/board/create/")
+    public String postBoard(@RequestBody Board board){
+
+        return boardService.postBoard(board);
+    }
 
 }
