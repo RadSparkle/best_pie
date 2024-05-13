@@ -1,30 +1,29 @@
 package com.jkb.bestpie.api.domain.board.entity;
 
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import lombok.*;
-import org.springframework.data.annotation.Id;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
-@AllArgsConstructor
+@Table(name = "board")
 @NoArgsConstructor
 public class Board {
 
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
 
-private String title;
+    @Column(name = "title") // 컬럼 이름 명시
+    private String title;
 
-private String content;
+    @Column(name = "content") // 컬럼 이름 명시
+    private String content;
 
-private Data date;
-
-
-
-
-
+    @Column(name = "date") // 컬럼 이름 명시
+    private LocalDateTime date;
 }
+
