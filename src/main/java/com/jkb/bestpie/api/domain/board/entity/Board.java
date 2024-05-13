@@ -8,22 +8,19 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-@Table(name = "board")
+@Table(name = "BOARD")
 @NoArgsConstructor
 public class Board {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "board_id")
     private Integer id;
 
-    @Column(name = "title") // 컬럼 이름 명시
     private String title;
 
-    @Column(name = "content") // 컬럼 이름 명시
     private String content;
 
-    @Column(name = "date") // 컬럼 이름 명시
     private LocalDateTime date;
 }
 
