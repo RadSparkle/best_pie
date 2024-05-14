@@ -3,6 +3,7 @@ package com.jkb.bestpie.api.domain.board.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
 
@@ -21,6 +22,7 @@ public class Board {
 
     private String content;
 
+    @CreatedDate
     private LocalDateTime date;
 }
 
