@@ -24,6 +24,18 @@ public class BoardService {
         // 저장된 엔티티의 ID를 추출하여 반환합니다.
         return "Board saved with ID: " + savedBoard.getId();
     }
+    public String updateBoard(Integer id, Board board) {
+        Board existingBoard = boardRepository.findById(id).orElse(null);
+        if (existingBoard == null) {
+            return "게시글을 찾을 수 없습니다.";
+        }
+        // 기존 게시글의 내용을 새로운 내용으로 업데이트
+        existingBoard.setTitle(board.getTitle());
+        existingBoard.setContent(board.getContent());
+        // 수정된 게시글 저장
+        boardRepository.save(existingBoard);
+        return "게시글이 성공적으로 수정되었습니다.";
+    }
 
 
 }

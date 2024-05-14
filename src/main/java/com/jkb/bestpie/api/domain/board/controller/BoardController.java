@@ -31,5 +31,11 @@ public class BoardController {
         return ResponseEntity.ok(result);
     }
 
+    @PutMapping("/update/{id}")
+    public ResponseEntity<String> updateBoard(@PathVariable("id") Integer id, @RequestBody Board board) {
+        String result = boardService.updateBoard(id, board);
+        return ResponseEntity.ok(result);
+    }
+
 
 }
