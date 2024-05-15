@@ -15,7 +15,7 @@ public class TimeUtil {
     private final String YYYYMMDDHHMMSS_FORMAT_B = "yyyy.MM.dd HH:mm";
 
     public LocalDateTime getLocalDateTime(String date) {
-        if (!date.isEmpty()) {
+        if (!date.isEmpty() && date!=null) {
             try {
                 // 우선 들어온 문자열이 "yyyy-MM-dd HH:mm:ss" 형식인지 확인
                 return LocalDateTime.parse(date, DateTimeFormatter.ofPattern(YYYYMMDDHHMMSS_FORMAT_A));
