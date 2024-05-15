@@ -43,7 +43,7 @@ public class ScrapController {
             Elements elements = getWebPage(scrapeConfig.getDcinsideBestUrl()).select(scrapeConfig.getDcinsidePostListCssQuery());
 
             for(Element element : elements) {
-                community.setUrl(URLDecoder.decode(element.select(scrapeConfig.getDcinsidePostListCssQuery()).attr("href"), "UTF-8"));
+                community.setUrl(URLDecoder.decode(element.select(scrapeConfig.getDcinsideUrlCssQuery()).attr("href"), "UTF-8"));
                 community.setTitle(element.selectFirst("a").text());
                 community.setRegDate(timeUtil.getLocalDateTime(element.selectFirst(scrapeConfig.getDcinsideRegDateCssQuery()).attr("title")));
                 community.setSiteName(DCINSIDE);
