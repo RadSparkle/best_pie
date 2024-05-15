@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 @Component
 @Getter
 public class ScrapeConfig {
-
     @Value("${scrape.best.url.dcinside}")
     private String dcinsideBestUrl;
 
@@ -23,13 +22,13 @@ public class ScrapeConfig {
     @Value("${scrape.home.url.dcinside}")
     private String dcinsideHomeUrl;
 
-    @Value("${scrape.best.url.clien}")
+    @Value("${scrape.home.url.clien}")
     private String clienHomeUrl;
 
-    @Value("${scrape.best.url.nate}")
+    @Value("${scrape.home.url.nate}")
     private String nateHomeUrl;
 
-    @Value("${scrape.best.url.bobae}")
+    @Value("${scrape.home.url.bobae}")
     private String bobaeHomeUrl;
 
     @Value("${scrape.css_query.dcinside.post_list}")
