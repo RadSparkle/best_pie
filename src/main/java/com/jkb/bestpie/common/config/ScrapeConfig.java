@@ -59,7 +59,7 @@ public class ScrapeConfig {
     @Value("${scrape.css_query.nate.reg_date}")
     private String nateRegDateCssQuery;
 
-    @Value("${scrape.css_query.bobae.post_lie}")
+    @Value("${scrape.css_query.bobae.post_list}")
     private String bobaePostListCssQuery;
 
     @Value("${scrape.css_query.bobae.url}")
