@@ -10,18 +10,23 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/comments")
+@RequestMapping("/api/v1/board/commnets")
 @RequiredArgsConstructor
 public class CommentController {
 
     private final CommentService commentService;
 
-    @GetMapping("/board/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<List<Comment>> getCommentsByBoardId(@PathVariable("id") Integer boardId) {
         List<Comment> comments = commentService.getCommentsByBoardId(boardId);
         return ResponseEntity.ok(comments);
     }
 
+    @PostMapping("/{id}")
+    public ResponseEntity<String> addCommentToBoard(@PathVariable("id") Integer boardId, @RequestBody Comment comment) {
+        String result = commentService.postCommentToBoard(boardId, comment);
+        return ResponseEntity.ok(result);
+    }
 
 
 
