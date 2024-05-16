@@ -91,17 +91,15 @@ public class ScrapController {
     }
 
     @Scheduled(fixedRate = 10000)
-    public void bobaeScrape() throws UnsupportedEncodingException {
+    public void bobaeScrape() {
         Community community = new Community();
         Elements elements = getWebPage(scrapeConfig.getBobaeBestUrl()).select(scrapeConfig.getBobaePostListCssQuery()).select("tbody").select("tr");
         for(Element element : elements) {
             community.setUrl(scrapeConfig.getBobaeHomeUrl() + element.select(scrapeConfig.getBobaeUrlCssQuery()).attr("href"));
             community.setTitle(element.select(scrapeConfig.getBobaeTitleCssQuery()).text());
-
             //시간 포맷이 일반적이지 않아서 일단 보류
 //            community.setRegDate(timeUtil.getLocalDateTime(getWebPage(url).selectFirst("span.date").text()));
             community.setSiteName(BOBAE);
-
             scrapService.saveScrap(community);
         }
         log.info("BOBAE DREAM SCRAPE");
@@ -111,7 +109,7 @@ public class ScrapController {
         try {
             return Jsoup.connect(url).get();
         } catch (IOException e) {
-            log.error("Can't get web page : {}", url);
+            log.error("Can't get web page : {}, {}", url, e);
         }
         return null;
     }
