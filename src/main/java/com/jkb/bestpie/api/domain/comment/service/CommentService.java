@@ -52,6 +52,21 @@ public class CommentService {
         }
     }
 
+    public String deleteComment(Integer id) {
+        try {
+            Optional<Comment> optionalComment = commentRepository.findById(id);
+            if (optionalComment.isPresent()) {
+                commentRepository.delete(optionalComment.get());
+                return "댓글이 성공적으로 삭제되었습니다.";
+            } else {
+                return "댓글을 찾을 수 없습니다.";
+            }
+        } catch (Exception e) {
+            return "댓글 삭제에 실패했습니다.";
+        }
+    }
+
+
 
 
 
