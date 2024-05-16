@@ -37,5 +37,12 @@ public class BoardController {
         return ResponseEntity.ok(result);
     }
 
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteBoard(@PathVariable("id") Integer id) {
+        String result = boardService.deleteBoard(id);
+        return ResponseEntity.ok(result);
+    }
+
+
 
 }
