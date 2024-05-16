@@ -7,6 +7,7 @@ import com.jkb.bestpie.api.domain.comment.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -18,8 +19,8 @@ public class CommentService {
     @Autowired
     private BoardRepository boardRepository;
 
-    public List<Comment> getAllComments() {
-        return commentRepository.findAll();
+    public List<Comment> getCommentsByBoardId(Integer boardId) {
+        return commentRepository.findByBoardId(boardId);
     }
 
 

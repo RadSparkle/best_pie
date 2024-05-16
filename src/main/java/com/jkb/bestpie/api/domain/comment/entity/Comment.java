@@ -20,5 +20,7 @@ public class Comment {
 
     private String content;
 
+    @Column(name = "board_id")
+    private Integer boardId; // board_id 컬럼 추가
 
 }

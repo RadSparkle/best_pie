@@ -5,9 +5,7 @@ import com.jkb.bestpie.api.domain.comment.entity.Comment;
 import com.jkb.bestpie.api.domain.comment.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,11 +16,12 @@ public class CommentController {
 
     private final CommentService commentService;
 
-    @GetMapping("/list")
-    public ResponseEntity<List<Comment>> getAllComments() {
-        List<Comment> comments = commentService.getAllComments();
+    @GetMapping("/board/{id}")
+    public ResponseEntity<List<Comment>> getCommentsByBoardId(@PathVariable("id") Integer boardId) {
+        List<Comment> comments = commentService.getCommentsByBoardId(boardId);
         return ResponseEntity.ok(comments);
     }
+
 
 
 
