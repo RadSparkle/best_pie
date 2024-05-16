@@ -28,6 +28,12 @@ public class CommentController {
         return ResponseEntity.ok(result);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateComment(@PathVariable("id") Integer commentId, @RequestBody Comment comment) {
+        String result = commentService.updateComment(commentId, comment);
+        return ResponseEntity.ok(result);
+    }
+
 
 
 }
