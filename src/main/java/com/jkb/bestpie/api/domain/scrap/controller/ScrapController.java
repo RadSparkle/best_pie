@@ -41,7 +41,7 @@ public class ScrapController {
 
     private static String BOBAE = "BOBAE";
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 600000)
     public void dcinsideScrape() {
         Community community = new Community();
         try {
@@ -60,7 +60,7 @@ public class ScrapController {
         }
     }
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 600000)
     public void clienScrape() throws UnsupportedEncodingException {
         Community community = new Community();
 
@@ -76,7 +76,7 @@ public class ScrapController {
         log.info("CLIEN SCRAPE");
     }
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 600000)
     public void natePanScrape() throws UnsupportedEncodingException {
         Community community = new Community();
         Elements elements = getWebPage(scrapeConfig.getNateBestUrl()).select(scrapeConfig.getNatePostListCssQuery()).select("li");
@@ -92,7 +92,7 @@ public class ScrapController {
         log.info("NATE PAN SCRAPE");
     }
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 600000)
     public void bobaeScrape() {
         Community community = new Community();
         Elements elements = getWebPage(scrapeConfig.getBobaeBestUrl()).select(scrapeConfig.getBobaePostListCssQuery()).select("tbody").select("tr");
