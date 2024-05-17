@@ -17,5 +17,4 @@ public class Community {
     private String siteName;
     private String title;
     private String url;
-    private LocalDateTime regDate;
 }

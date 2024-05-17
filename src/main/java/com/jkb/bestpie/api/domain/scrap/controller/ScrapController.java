@@ -50,7 +50,6 @@ public class ScrapController {
             for(Element element : elements) {
                 community.setUrl(URLDecoder.decode(element.select(scrapeConfig.getDcinsideUrlCssQuery()).attr("href"), "UTF-8"));
                 community.setTitle(element.selectFirst("a").text());
-                community.setRegDate(timeUtil.getLocalDateTime(element.selectFirst(scrapeConfig.getDcinsideRegDateCssQuery()).attr("title")));
                 community.setSiteName(DCINSIDE);
 
                 scrapService.saveScrap(community);
@@ -70,7 +69,6 @@ public class ScrapController {
         for(Element element : elements) {
             community.setUrl(URLDecoder.decode(element.select(scrapeConfig.getClienUrlCssQuery()).attr("href"), "UTF-8"));
             community.setTitle(element.select(scrapeConfig.getClienUrlCssQuery()).attr("title"));
-            community.setRegDate(timeUtil.getLocalDateTime(element.select(scrapeConfig.getClienRegDateCssQuery()).text()));
             community.setSiteName(CLIEN);
 
             scrapService.saveScrap(community);
@@ -87,7 +85,6 @@ public class ScrapController {
 
             community.setUrl(url);
             community.setTitle(element.select("h2").text());
-            community.setRegDate(timeUtil.getLocalDateTime(getWebPage(url).selectFirst(scrapeConfig.getNateRegDateCssQuery()).text()));
             community.setSiteName(NATE);
 
             scrapService.saveScrap(community);
@@ -102,8 +99,6 @@ public class ScrapController {
         for(Element element : elements) {
             community.setUrl(scrapeConfig.getBobaeHomeUrl() + element.select(scrapeConfig.getBobaeUrlCssQuery()).attr("href"));
             community.setTitle(element.select(scrapeConfig.getBobaeTitleCssQuery()).text());
-            //시간 포맷이 일반적이지 않아서 일단 보류
-//            community.setRegDate(timeUtil.getLocalDateTime(getWebPage(url).selectFirst("span.date").text()));
             community.setSiteName(BOBAE);
             scrapService.saveScrap(community);
         }
