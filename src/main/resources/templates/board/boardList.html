@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board List</title>
+    <style>
+        /* 스타일을 적용할 CSS 코드 작성 */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        /* 리스트 스타일링 */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        ul li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        ul li a:hover {
+            color: #007bff;
+        }
+
+        /* 글쓰기 링크 스타일링 */
+        .write-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .write-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<h1>게시글 목록</h1>
+
+<ul>
+    <!-- 각 게시글을 리스트로 표시 -->
+    <li th:each="board : ${boards}">
+        <a th:href="@{'/boards/detail/' + ${board.id}}">
+            <span th:text="${board.id}"></span>
+            <span th:text="${board.title}"></span>
+        </a>
+    </li>
+</ul>
+
+<!-- 글쓰기 링크 -->
+<a href="/boards/new" class="write-link">글쓰기</a>
+</body>
+</html>

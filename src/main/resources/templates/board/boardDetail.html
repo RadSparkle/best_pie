@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Board Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .detail-section {
+            margin-bottom: 20px;
+        }
+
+        .detail-section p {
+            margin: 0;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .delete-form, .edit-form {
+            margin-top: 20px;
+        }
+
+        .delete-form button, .edit-form button {
+            background-color: #ff5050;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .delete-form button:hover, .edit-form button:hover {
+            background-color: #e60000;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Board Detail</h1>
+    <div class="detail-section">
+        <p>아이디: <span th:text="${board.id}"></span></p>
+        <p>제목: <span th:text="${board.title}"></span></p>
+        <p>내용: <span th:text="${board.content}"></span></p>
+    </div>
+
+    <form id="deleteForm" class="delete-form" th:action="@{/boards/delete/{id}(id=${board.id})}" method="post">
+        <button type="submit" onclick="return confirm('정말로 삭제하시겠습니까?')">삭제</button>
+    </form>
+
+    <form class="edit-form" th:action="@{'/boards/edit/' + ${board.id}}" method="get">
+        <button type="submit">수정</button>
+    </form>
+</div>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var deleteForm = document.getElementById('deleteForm');
+    deleteForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        fetch(deleteForm.action, {
+            method: 'POST'
+        })
+        .then(function(response) {
+            if (!response.ok) {
+                throw Error(response.statusText);
+            }
+            return response.text();
+        })
+        .then(function(data) {
+            alert('게시글이 삭제되었습니다.');
+            window.location.href = '/boards/list';
+        })
+        .catch(function(error) {
+            alert('게시글 삭제에 실패했습니다.');
+        });
+    });
+    /*]]>*/
+</script>
+</body>
+</html>

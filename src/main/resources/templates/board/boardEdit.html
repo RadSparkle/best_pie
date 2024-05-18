@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Board</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: calc(100% - 12px);
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<h1>Edit Board</h1>
+<form id="editForm" action="#" th:action="@{/boards/update/{id}(id=${board.id})}" th:object="${board}" method="post">
+    <div>
+        <label for="title">Title</label>
+        <input type="text" id="title" th:field="*{title}" required />
+    </div>
+    <div>
+        <label for="content">Content</label>
+        <textarea id="content" th:field="*{content}" required></textarea>
+    </div>
+    <div>
+        <button type="submit">Update</button>
+    </div>
+</form>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var editForm = document.getElementById('editForm');
+    editForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var formData = new FormData(editForm);
+
+        fetch(editForm.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(function(response) {
+            if (!response.ok) {
+                throw Error(response.statusText);
+            }
+            return response.text();
+        })
+        .then(function(data) {
+            // 게시글 수정 성공시에만 상세 페이지로 이동
+            alert('게시글이 수정되었습니다.');
+            window.location.href = '/boards/list';
+        })
+        .catch(function(error) {
+            alert('게시글 수정에 실패했습니다.');
+        });
+    });
+    /*]]>*/
+</script>
+
+</body>
+</html>

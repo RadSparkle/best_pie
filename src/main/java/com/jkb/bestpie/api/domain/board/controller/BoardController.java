@@ -20,6 +20,16 @@ public class BoardController {
         return boardService.getBoards();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Board> getBoardById(@PathVariable("id") Integer id) {
+        Board board = boardService.getBoardById(id);
+        if (board != null) {
+            return ResponseEntity.ok(board);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @PostMapping("/post")
     public ResponseEntity<String> postBoard(@RequestBody Board board) {
         // 클라이언트가 전송한 데이터를 이용하여 Board 엔티티 생성
@@ -42,6 +52,8 @@ public class BoardController {
         String result = boardService.deleteBoard(id);
         return ResponseEntity.ok(result);
     }
+
+
 
 
 

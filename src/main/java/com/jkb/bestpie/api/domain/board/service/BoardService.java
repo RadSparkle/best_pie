@@ -23,6 +23,10 @@ public class BoardService {
         return boardRepository.findAll();
     }
 
+    public Board getBoardById(Integer id) {
+        return boardRepository.findById(id).orElse(null);
+    }
+
     public String postBoard(Board board) {
         // 게시글을 저장하고 저장된 게시글의 ID를 반환합니다.
         Board savedBoard = boardRepository.save(board);
