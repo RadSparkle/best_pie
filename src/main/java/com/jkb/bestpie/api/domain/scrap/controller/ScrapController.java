@@ -17,6 +17,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 
@@ -66,7 +67,7 @@ public class ScrapController {
         Elements elements = getWebPage(scrapeConfig.getClienBestUrl()).select(scrapeConfig.getClienPostListCssQuery());
 
         for(Element element : elements) {
-            community.setUrl(URLDecoder.decode(element.select(scrapeConfig.getClienUrlCssQuery()).attr("href"), "UTF-8"));
+            community.setUrl(URLDecoder.decode(element.select(scrapeConfig.getClienUrlCssQuery()).attr("href"), StandardCharsets.UTF_8));
             community.setTitle(element.select(scrapeConfig.getClienUrlCssQuery()).attr("title"));
             community.setSiteName(CLIEN);
 
@@ -81,7 +82,7 @@ public class ScrapController {
         Community community = new Community();
         Elements elements = getWebPage(scrapeConfig.getNateBestUrl()).select(scrapeConfig.getNatePostListCssQuery()).select("li");
         for(Element element : elements) {
-            String url = scrapeConfig.getNateHomeUrl() + URLDecoder.decode(element.select("a").attr("href"), "UTF-8");
+            String url = scrapeConfig.getNateHomeUrl() + URLDecoder.decode(element.select("a").attr("href"), StandardCharsets.UTF_8);
 
             community.setUrl(url);
             community.setTitle(element.select("h2").text());
@@ -114,9 +115,7 @@ public class ScrapController {
             return Jsoup.connect(url).get();
         } catch (IOException e) {
             log.error("Can't get web page : {}, {}", url, e);
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        } catch (KeyManagementException e) {
+        } catch (NoSuchAlgorithmException | KeyManagementException e) {
             throw new RuntimeException(e);
         }
         return null;
