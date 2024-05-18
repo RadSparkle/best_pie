@@ -27,8 +27,6 @@ public class ScrapController {
 
     private ScrapServiceImpl scrapService;
 
-    private TimeUtil timeUtil;
-
     private SSL ssl;
 
     private ScrapeConfig scrapeConfig;
@@ -52,9 +50,10 @@ public class ScrapController {
                 community.setTitle(element.selectFirst("a").text());
                 community.setSiteName(DCINSIDE);
 
+                log.info("DCINSIDE SCRAPE START : {}", community.getTitle());
                 scrapService.saveScrap(community);
+                log.info("DCINSIDE SCRAPE DONE : {}", community.getTitle());
             }
-            log.info("DCINSIDE SCRAPE");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -71,9 +70,10 @@ public class ScrapController {
             community.setTitle(element.select(scrapeConfig.getClienUrlCssQuery()).attr("title"));
             community.setSiteName(CLIEN);
 
+            log.info("CLIEN SCRAPE START : {}", community.getTitle());
             scrapService.saveScrap(community);
+            log.info("CLIEN SCRAPE DONE : {}", community.getTitle());
         }
-        log.info("CLIEN SCRAPE");
     }
 
     @Scheduled(fixedRate = 600000)
@@ -87,9 +87,10 @@ public class ScrapController {
             community.setTitle(element.select("h2").text());
             community.setSiteName(NATE);
 
+            log.info("NATE SCRAPE START : {}", community.getTitle());
             scrapService.saveScrap(community);
+            log.info("NATE SCRAPE DONE : {}", community.getTitle());
         }
-        log.info("NATE PAN SCRAPE");
     }
 
     @Scheduled(fixedRate = 600000)
@@ -100,9 +101,11 @@ public class ScrapController {
             community.setUrl(scrapeConfig.getBobaeHomeUrl() + element.select(scrapeConfig.getBobaeUrlCssQuery()).attr("href"));
             community.setTitle(element.select(scrapeConfig.getBobaeTitleCssQuery()).text());
             community.setSiteName(BOBAE);
+
+            log.info("BOBAE SCRAPE START : {}", community.getTitle());
             scrapService.saveScrap(community);
+            log.info("BOBAE SCRAPE DONE : {}", community.getTitle());
         }
-        log.info("BOBAE DREAM SCRAPE");
     }
 
     public Document getWebPage(String url) {
