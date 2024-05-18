@@ -4,7 +4,6 @@ import com.jkb.bestpie.api.domain.scrap.Entity.Community;
 import com.jkb.bestpie.api.domain.scrap.service.ScrapServiceImpl;
 import com.jkb.bestpie.common.config.ScrapeConfig;
 import com.jkb.bestpie.common.utils.SSL;
-import com.jkb.bestpie.common.utils.TimeUtil;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.jsoup.Jsoup;
@@ -15,7 +14,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.security.KeyManagementException;
