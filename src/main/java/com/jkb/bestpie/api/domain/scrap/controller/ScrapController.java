@@ -31,13 +31,13 @@ public class ScrapController {
 
     private ScrapeConfig scrapeConfig;
 
-    private static String DCINSIDE = "DCINSIDE";
+    private final static String DCINSIDE = "DCINSIDE";
 
-    private static String CLIEN = "CLIEN";
+    private final static String CLIEN = "CLIEN";
 
-    private static String NATE = "NATE";
+    private final static String NATE = "NATE";
 
-    private static String BOBAE = "BOBAE";
+    private final static String BOBAE = "BOBAE";
 
     @Scheduled(fixedRate = 600000)
     public void dcinsideScrape() {
