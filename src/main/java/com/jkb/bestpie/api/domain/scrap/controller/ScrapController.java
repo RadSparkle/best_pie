@@ -43,20 +43,16 @@ public class ScrapController {
     @Scheduled(fixedRate = 600000)
     public void dcinsideScrape() {
         Community community = new Community();
-        try {
-            Elements elements = getWebPage(scrapeConfig.getDcinsideBestUrl()).select(scrapeConfig.getDcinsidePostListCssQuery());
+        Elements elements = getWebPage(scrapeConfig.getDcinsideBestUrl()).select(scrapeConfig.getDcinsidePostListCssQuery());
 
-            for(Element element : elements) {
-                community.setUrl(URLDecoder.decode(element.select(scrapeConfig.getDcinsideUrlCssQuery()).attr("href"), "UTF-8"));
-                community.setTitle(element.selectFirst("a").text());
-                community.setSiteName(DCINSIDE);
+        for(Element element : elements) {
+            community.setUrl(URLDecoder.decode(element.select(scrapeConfig.getDcinsideUrlCssQuery()).attr("href"), StandardCharsets.UTF_8));
+            community.setTitle(element.selectFirst("a").text());
+            community.setSiteName(DCINSIDE);
 
-                log.info("DCINSIDE SCRAPE START : {}", community.getTitle());
-                scrapService.saveScrap(community);
-                log.info("DCINSIDE SCRAPE DONE : {}", community.getTitle());
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+            log.info("DCINSIDE SCRAPE START : {}", community.getTitle());
+            scrapService.saveScrap(community);
+            log.info("DCINSIDE SCRAPE DONE : {}", community.getTitle());
         }
     }
 
