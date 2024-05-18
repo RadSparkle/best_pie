@@ -57,7 +57,7 @@ public class ScrapController {
     }
 
     @Scheduled(fixedRate = 600000)
-    public void clienScrape() throws UnsupportedEncodingException {
+    public void clienScrape() {
         Community community = new Community();
 
         Elements elements = getWebPage(scrapeConfig.getClienBestUrl()).select(scrapeConfig.getClienPostListCssQuery());
@@ -74,7 +74,7 @@ public class ScrapController {
     }
 
     @Scheduled(fixedRate = 600000)
-    public void natePanScrape() throws UnsupportedEncodingException {
+    public void natePanScrape() {
         Community community = new Community();
         Elements elements = getWebPage(scrapeConfig.getNateBestUrl()).select(scrapeConfig.getNatePostListCssQuery()).select("li");
         for(Element element : elements) {
