@@ -14,7 +14,7 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "comment_id")
-    private Integer id;
+    private Integer commentId; // commentId로 변경
 
     private String title;
 
@@ -23,4 +23,7 @@ public class Comment {
     @Column(name = "board_id")
     private Integer boardId; // board_id 컬럼 추가
 
+
+
 }
+

@@ -19,6 +19,8 @@ public class BoardService {
     @PersistenceContext
     private EntityManager entityManager;
 
+
+
     public List<Board> getBoards() {
         return boardRepository.findAll();
     }
