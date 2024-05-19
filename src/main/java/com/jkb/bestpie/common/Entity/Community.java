@@ -1,4 +1,4 @@
-package com.jkb.bestpie.api.domain.scrap.Entity;
+package com.jkb.bestpie.common.Entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
