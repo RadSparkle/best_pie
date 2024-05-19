@@ -1,6 +1,6 @@
 package com.jkb.bestpie.api.domain.scrap.service;
 
-import com.jkb.bestpie.api.domain.scrap.Entity.Community;
+import com.jkb.bestpie.common.Entity.Community;
 
 public interface ScrapService {
 
