@@ -3,201 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Combined Header, Main Content, and Footer</title>
+    <title>Best Pie - Post</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/board/boardPost.css"> <!-- External stylesheet -->
     <style>
-        /* Reset CSS */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Header Styles */
+        /* Custom CSS */
         header {
-            background-color: #333;
+            background-color: #343a40;
             color: #fff;
-            padding: 20px;
+            padding: 20px 0;
             text-align: center;
         }
-
-        header h1 {
-            margin: 0;
-            font-size: 24px;
-        }
-
-        /* Navigation Menu */
-        nav {
-            margin-top: 10px;
-        }
-
         nav ul {
-            list-style-type: none;
             padding: 0;
-            text-align: center;
+            list-style: none;
+            display: flex;
+            justify-content: center;
         }
-
         nav ul li {
-            display: inline;
             margin-right: 20px;
         }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: #ffcc00;
-        }
-
-        /* Main Content Styles */
         main {
             padding: 20px;
         }
-
-        h1 {
-            color: #333;
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        /* Form Styles */
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        input[type="text"], textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-            resize: none;
-        }
-
-        button[type="submit"] {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        button[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-
-        /* Footer Styles */
         footer {
-            background-color: #333;
+            background-color: #343a40;
             color: #fff;
-            padding: 10px;
             text-align: center;
+            padding: 10px 0;
             position: fixed;
             bottom: 0;
             width: 100%;
-        }
-
-        footer p {
-            margin: 0;
-            font-size: 14px;
         }
     </style>
 </head>
 <body>
 <header>
-    <h1>My Website</h1>
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a href="#" class="navbar-brand">BESTPIE</a>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/boards/list">QnA</a> <!-- Updated href attribute -->
+            </li>
         </ul>
     </nav>
 </header>
 
-<main>
 
-    <div class="container">
-        <h1>게시글 등록</h1>
-        <form id="boardForm" th:action="@{/boards/post}" th:object="${board}" method="post">
-            <div class="form-group">
-                <label for="title">제목</label>
-                <input type="text" id="title" th:field="*{title}" required />
-            </div>
-            <div class="form-group">
-                <label for="content">내용</label>
-                <textarea id="content" th:field="*{content}" required></textarea>
-            </div>
-            <div class="form-group">
-                <button type="submit">등록</button>
-            </div>
-        </form>
-    </div>
-
+<main class="container">
+    <h1 class="mt-5">게시글 등록</h1>
+    <form id="boardForm" th:action="@{/boards/post}" th:object="${board}" method="post">
+        <div class="form-group">
+            <label for="title">제목</label>
+            <input type="text" id="title" class="form-control" th:field="*{title}" required />
+        </div>
+        <div class="form-group">
+            <label for="content">내용</label>
+            <textarea id="content" class="form-control" th:field="*{content}" required></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">등록</button>
+        </div>
+    </form>
 </main>
-
-
 
 <footer>
     <p>&copy; 2024 My Website. All Rights Reserved.</p>
 </footer>
-
-<script th:inline="javascript">
-    /*<![CDATA[*/
-    var form = document.getElementById('boardForm');
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        var formData = new FormData(form);
-
-        fetch(form.action, {
-            method: 'POST',
-            body: formData
-        })
-        .then(function(response) {
-            if (!response.ok) {
-                throw Error(response.statusText);
-            }
-            return response.text();
-        })
-        .then(function(data) {
-            alert('게시글이 등록되었습니다.');
-            window.location.href = '/boards/list'; // 성공한 경우 리다이렉트
-        })
-        .catch(function(error) {
-            alert('게시글 등록에 실패했습니다.');
-        });
-    });
-    /*]]>*/
-</script>
 
 </body>
 </html>

@@ -3,171 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Combined Header, Main Content, and Footer</title>
+    <title>Best Pie - List</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Reset CSS */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body, html {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-        }
-
-        /* Header Styles */
         header {
-            background-color: #333;
+            background-color: #343a40;
             color: #fff;
-            padding: 20px;
+            padding: 20px 0;
             text-align: center;
-            height: 10%;
+            margin-bottom: 20px; /* Added margin bottom */
         }
-
-        header h1 {
-            margin: 0;
-            font-size: 24px;
-        }
-
-        /* Navigation Menu */
-        nav {
-            margin-top: 10px;
-        }
-
         nav ul {
-            list-style-type: none;
             padding: 0;
-            text-align: center;
+            list-style: none;
+            display: flex;
+            justify-content: center;
         }
-
         nav ul li {
-            display: inline;
             margin-right: 20px;
         }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: #ffcc00;
-        }
-
-        /* Main Content Styles */
         main {
-            height: 60%;
             padding: 20px;
         }
-
-        h1 {
-            color: #333;
-            margin-top: 20px;
+        .list-group-item {
+            background-color: #f8f9fa;
         }
-
-        /* 리스트 스타일링 */
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .list-group-item span {
+            font-weight: bold;
         }
-
-        ul li {
-
-            padding: 15px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        ul li:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        ul li a {
-            text-decoration: none;
-            color: #333;
-        }
-
-        ul li a:hover {
-            color: #007bff;
-        }
-
-        /* 글쓰기 링크 스타일링 */
-        .write-link {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .write-link:hover {
-            background-color: #0056b3;
-        }
-
-        /* Footer Styles */
         footer {
-            background-color: #333;
+            background-color: #343a40;
             color: #fff;
-            padding: 10px;
             text-align: center;
+            padding: 10px 0;
             position: fixed;
             bottom: 0;
             width: 100%;
-            height: 10%;
-        }
-
-        footer p {
-            margin: 0;
-            font-size: 14px;
         }
     </style>
 </head>
 <body>
 <header>
-    <h1>My Website</h1>
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a href="#" class="navbar-brand">BESTPIE</a>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/boards/list">QnA</a> <!-- Updated href attribute -->
+            </li>
         </ul>
     </nav>
 </header>
-<main>
-    <h1>게시글 목록</h1>
 
-    <ul>
-        <!-- 각 게시글을 리스트로 표시 -->
-        <li th:each="board : ${boards}">
+<main class="container">
+    <h1 class="mt-5">게시글 목록</h1>
+    <ul class="list-group mt-4">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-sm-6">
+                    <span>게시글번호</span>
+                </div>
+                <div class="col-sm-6">
+                    <span>게시글제목</span>
+                </div>
+            </div>
+        </li>
+        <!-- Display each board as a list item -->
+        <li th:each="board : ${boards}" class="list-group-item">
             <a th:href="@{'/boards/detail/' + ${board.id}}">
-                <span th:text="${board.id}"></span>
-                <span th:text="${board.title}"></span>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <span th:text="${board.id}"></span>
+                    </div>
+                    <div class="col-sm-6">
+                        <span th:text="${board.title}"></span>
+                    </div>
+                </div>
             </a>
         </li>
     </ul>
 
-    <!-- 글쓰기 링크 -->
-    <a href="/boards/new" class="write-link">글쓰기</a>
+    <!-- Writing link -->
+    <a href="/boards/new" class="btn btn-primary mt-4">글쓰기</a>
 </main>
-
-<footer>
+<footer class="bg-dark text-white text-center py-3">
     <p>&copy; 2024 My Website. All Rights Reserved.</p>
 </footer>
 </body>
