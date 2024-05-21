@@ -1,10 +1,9 @@
 package com.jkb.bestpie.api.domain.scrap.service;
 
-import com.jkb.bestpie.api.domain.scrap.Entity.Community;
+import com.jkb.bestpie.common.Entity.Community;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,7 +27,6 @@ class ScrapServiceImplTest {
         community.setSiteName("testSite");
         community.setUrl("test_test.com");
         community.setTitle("test_title");
-        community.setRegDate(LocalDateTime.now());
         Long id = scrapService.saveScrap(community);
 
         // when

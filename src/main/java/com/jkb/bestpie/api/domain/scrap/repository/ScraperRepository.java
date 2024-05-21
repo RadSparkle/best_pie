@@ -1,6 +1,6 @@
 package com.jkb.bestpie.api.domain.scrap.repository;
 
-import com.jkb.bestpie.api.domain.scrap.Entity.Community;
+import com.jkb.bestpie.common.Entity.Community;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

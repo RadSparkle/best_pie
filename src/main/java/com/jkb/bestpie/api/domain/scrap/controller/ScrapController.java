@@ -1,6 +1,6 @@
 package com.jkb.bestpie.api.domain.scrap.controller;
 
-import com.jkb.bestpie.api.domain.scrap.Entity.Community;
+import com.jkb.bestpie.common.Entity.Community;
 import com.jkb.bestpie.api.domain.scrap.service.ScrapServiceImpl;
 import com.jkb.bestpie.common.config.ScrapeConfig;
 import com.jkb.bestpie.common.utils.SSL;

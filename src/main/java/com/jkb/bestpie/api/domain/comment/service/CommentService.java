@@ -20,6 +20,8 @@ public class CommentService {
     @Autowired
     private BoardRepository boardRepository;
 
+
+
     public List<Comment> getCommentsByBoardId(Integer boardId) {
         return commentRepository.findByBoardId(boardId);
     }
@@ -35,9 +37,9 @@ public class CommentService {
         }
     }
 
-    public String updateComment(Integer id, Comment updatedComment) {
+    public String updateComment(Integer commentId, Comment updatedComment) {
         try {
-            Optional<Comment> optionalComment = commentRepository.findById(id);
+            Optional<Comment> optionalComment = commentRepository.findById(commentId);
             if (optionalComment.isPresent()) {
                 Comment comment = optionalComment.get();
                 comment.setTitle(updatedComment.getTitle());
@@ -52,9 +54,9 @@ public class CommentService {
         }
     }
 
-    public String deleteComment(Integer id) {
+    public String deleteComment(Integer commentId) {
         try {
-            Optional<Comment> optionalComment = commentRepository.findById(id);
+            Optional<Comment> optionalComment = commentRepository.findById(commentId);
             if (optionalComment.isPresent()) {
                 commentRepository.delete(optionalComment.get());
                 return "댓글이 성공적으로 삭제되었습니다.";
