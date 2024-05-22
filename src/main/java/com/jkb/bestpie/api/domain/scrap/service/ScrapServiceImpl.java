@@ -22,7 +22,7 @@ public class ScrapServiceImpl implements ScrapService {
     public Long saveScrap(Community community) {
         if(!scraperRepository.existsBySiteNameAndTitle(community.getSiteName(), community.getTitle())){
             Community savedCommunity  = scraperRepository.save(community);
-            log.info("SCRAPE DONE : {}", community.getTitle());
+            log.info("{} | {}", community.getSiteName(), community.getTitle());
             return savedCommunity .getId();
         }
         return null;
