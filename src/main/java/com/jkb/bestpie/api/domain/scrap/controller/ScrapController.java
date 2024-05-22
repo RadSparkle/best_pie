@@ -48,9 +48,7 @@ public class ScrapController {
             community.setTitle(element.selectFirst("a").text());
             community.setSiteName(DCINSIDE);
 
-            log.info("DCINSIDE SCRAPE START : {}", community.getTitle());
             scrapService.saveScrap(community);
-            log.info("DCINSIDE SCRAPE DONE : {}", community.getTitle());
         }
     }
 
@@ -65,9 +63,7 @@ public class ScrapController {
             community.setTitle(element.select(scrapeConfig.getClienUrlCssQuery()).attr("title"));
             community.setSiteName(CLIEN);
 
-            log.info("CLIEN SCRAPE START : {}", community.getTitle());
             scrapService.saveScrap(community);
-            log.info("CLIEN SCRAPE DONE : {}", community.getTitle());
         }
     }
 
@@ -82,9 +78,7 @@ public class ScrapController {
             community.setTitle(element.select("h2").text());
             community.setSiteName(NATE);
 
-            log.info("NATE SCRAPE START : {}", community.getTitle());
             scrapService.saveScrap(community);
-            log.info("NATE SCRAPE DONE : {}", community.getTitle());
         }
     }
 
@@ -97,9 +91,7 @@ public class ScrapController {
             community.setTitle(element.select(scrapeConfig.getBobaeTitleCssQuery()).text());
             community.setSiteName(BOBAE);
 
-            log.info("BOBAE SCRAPE START : {}", community.getTitle());
             scrapService.saveScrap(community);
-            log.info("BOBAE SCRAPE DONE : {}", community.getTitle());
         }
     }
 
