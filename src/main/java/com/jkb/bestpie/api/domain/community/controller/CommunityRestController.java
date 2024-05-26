@@ -2,6 +2,7 @@ package com.jkb.bestpie.api.domain.community.controller;
 
 import com.jkb.bestpie.api.domain.community.service.CommunityService;
 import com.jkb.bestpie.common.Entity.Community;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +23,7 @@ public class CommunityRestController {
     /**
      * DcincideList
      */
-    @GetMapping("/DcincideList")
+    @GetMapping("/dcincideList")
     public List<CommunityDto> findDcincideList() {
         List<Community> communities = communityService.dcincideList();
         List<CommunityDto> collect = communities.stream()
@@ -55,7 +56,7 @@ public class CommunityRestController {
         return collect;
     }
 
-    @Getter
+    @Data
     @NoArgsConstructor
     static class CommunityDto{
         private Long Id;

@@ -29,22 +29,16 @@ public class CommunityController {
     @Value("${api.url}")
     private String apiUrl;
 
-    @GetMapping
+    @GetMapping("/")
     public String getCommunitiesView(Model model) {
-        try {
-            List<CommunityDto> dcinsideList = fetchData("/api/v1/community/DcincideList");
-            List<CommunityDto> nateList = fetchData("/api/v1/community/nateList");
-            List<CommunityDto> bobaeList = fetchData("/api/v1/community/bobaeList");
+        List<CommunityDto> dcinsideList = fetchData("/api/v1/community/dcincideList");
+        List<CommunityDto> nateList = fetchData("/api/v1/community/nateList");
+        List<CommunityDto> bobaeList = fetchData("/api/v1/community/bobaeList");
 
-            model.addAttribute("dcinside", dcinsideList);
-            model.addAttribute("nate", nateList);
-            model.addAttribute("bobae", bobaeList);
-
-            return "community/communityList";
-        } catch (RestClientException e) {
-            model.addAttribute("error", "Unable to fetch community data");
-            return "errorView"; // Return an error view template
-        }
+        model.addAttribute("dcinside", dcinsideList);
+        model.addAttribute("nate", nateList);
+        model.addAttribute("bobae", bobaeList);
+        return "community/communityList";
     }
 
     private List<CommunityDto> fetchData(String endpoint) {
