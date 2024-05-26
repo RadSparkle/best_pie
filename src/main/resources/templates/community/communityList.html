@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader" />
+
+    <ul class="list-group mt-4">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-sm-6">
+                    <span>커뮤니티</span>
+                </div>
+                <div class="col-sm-6">
+                    <span>제목</span>
+                </div>
+            </div>
+        </li>
+        <li th:each="community : ${dcinside}" class="list-group-item">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <span th:text="${community.site}"></span>
+                    </div>
+                    <div class="col-sm-6">
+                        <a th:href="@{${community.url}}" target="_blank"><span th:text="${community.title}"></span></a>
+                    </div>
+                </div>
+        </li>
+        <li th:each="community : ${nate}" class="list-group-item">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <span th:text="${community.site}"></span>
+                    </div>
+                    <div class="col-sm-6">
+                        <a th:href="@{${community.url}}" target="_blank"><span th:text="${community.title}"></span></a>
+                    </div>
+                </div>
+        </li>
+        <li th:each="community : ${bobae}" class="list-group-item">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <span th:text="${community.site}"></span>
+                    </div>
+                    <div class="col-sm-6">
+                        <a th:href="@{${community.url}}" target="_blank"><span th:text="${community.title}"></span></a>
+                    </div>
+                </div>
+        </li>
+    </ul>
+    <div th:replace="fragments/footer :: footer" />
+</div>
+</body>
+</html>
