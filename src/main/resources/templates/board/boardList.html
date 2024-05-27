@@ -6,90 +6,65 @@
     <title>Best Pie - List</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        header {
-            background-color: #343a40;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-            margin-bottom: 20px; /* Added margin bottom */
-        }
-        nav ul {
-            padding: 0;
-            list-style: none;
-            display: flex;
-            justify-content: center;
-        }
-        nav ul li {
-            margin-right: 20px;
-        }
         main {
-            padding: 20px;
+            padding-bottom: 100px; /* 푸터 높이만큼 여백 추가 */
         }
-        .list-group-item {
-            background-color: #f8f9fa;
-        }
-        .list-group-item span {
-            font-weight: bold;
-        }
-        footer {
-            background-color: #343a40;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
+        .footer {
             bottom: 0;
-            width: 100%;
+            width: 100%
+             position : relative;
+  transform : translateY(-100%);
         }
+        #wrapper{
+         height: auto;
+  min-height: 100%;
+        }
+        body {
+    font-family: 'Your Font Name', sans-serif; /* 여기에 원하는 폰트를 지정하세요 */
+    font-size: 16px; /* 폰트 크기를 조절할 수도 있습니다 */
+    /* 다른 원하는 스타일도 추가 가능합니다 */
+}
+
     </style>
 </head>
 <body>
-<header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a href="#" class="navbar-brand">BESTPIE</a>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/boards/list">QnA</a> <!-- Updated href attribute -->
-            </li>
-        </ul>
-    </nav>
-</header>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader" />
 
-<main class="container">
-    <h1 class="mt-5">게시글 목록</h1>
-    <ul class="list-group mt-4">
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col-sm-6">
-                    <span>게시글번호</span>
-                </div>
-                <div class="col-sm-6">
-                    <span>게시글제목</span>
-                </div>
-            </div>
-        </li>
-        <!-- Display each board as a list item -->
-        <li th:each="board : ${boards}" class="list-group-item">
-            <a th:href="@{'/boards/detail/' + ${board.id}}">
+    <main class="container">
+        <h1 class="mt-5">게시글 목록</h1>
+        <ul class="list-group mt-4">
+            <li class="list-group-item">
                 <div class="row">
                     <div class="col-sm-6">
-                        <span th:text="${board.id}"></span>
+                        <span>게시글번호</span>
                     </div>
                     <div class="col-sm-6">
-                        <span th:text="${board.title}"></span>
+                        <span>게시글제목</span>
                     </div>
                 </div>
-            </a>
-        </li>
-    </ul>
+            </li>
+            <!-- Display each board as a list item -->
+            <li th:each="board : ${boards}" class="list-group-item">
+                <a th:href="@{'/boards/detail/' + ${board.id}}">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <span th:text="${board.id}"></span>
+                        </div>
+                        <div class="col-sm-6">
+                            <span th:text="${board.title}"></span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
 
-    <!-- Writing link -->
-    <a href="/boards/new" class="btn btn-primary mt-4">글쓰기</a>
-</main>
-<footer class="bg-dark text-white text-center py-3">
-    <p>&copy; 2024 My Website. All Rights Reserved.</p>
-</footer>
+        <!-- Writing link -->
+        <a href="/boards/new" class="btn btn-primary mt-4">글쓰기</a>
+    </main>
+<div id="wrapper">
+    <div class="footer" th:replace="fragments/footer :: footer" />
+</div>
+</div>
 </body>
 </html>
