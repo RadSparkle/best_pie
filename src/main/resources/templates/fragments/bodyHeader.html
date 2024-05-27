@@ -1,5 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+
+        .text-muted{
+        font-size : 28px;
+        text-decoration: auto;
+        color: black !important;
+
+        }
+        .text-m{
+         font-size : 28px;
+        text-decoration: auto;
+        }
+    </style>
+</head>
 <div class="header" th:fragment="bodyHeader">
     <ul class="nav nav-pills pull-right">
         <li><a href="/" class="text-muted"><h2>BEST PIE</h2></a></li>
@@ -7,10 +22,10 @@
     <div class="container text-center">
         <div class="row" style="text-align: left">
             <div class="col">
-                <a href="/"><h3 class="text-muted">Community List</h3></a>
+                <a href="/" class="text-m"><h3 class="text-muted">Community List</h3></a>
             </div>
             <div class="col">
-                <a href="/boards/list"><h3 class="text-muted">Board List</h3></a>
+                <a href="/boards/list" class="text-m"><h3 class="text-muted">Board List</h3></a>
             </div>
         </div>
     </div>

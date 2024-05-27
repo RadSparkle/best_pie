@@ -9,21 +9,49 @@
         main {
             padding-bottom: 100px; /* 푸터 높이만큼 여백 추가 */
         }
+
         .footer {
             bottom: 0;
             width: 100%
              position : relative;
-  transform : translateY(-100%);
+          transform : translateY(-100%);
+                }
+
+                #wrapper{
+                 height: auto;
+          min-height: 100%;
+                }
+
+                body {
+            font-family: 'Your Font Name', sans-serif;
+            font-size: 16px;
         }
-        #wrapper{
-         height: auto;
-  min-height: 100%;
+
+                 .text-muted{
+                font-size : 28px;
+                text-decoration: auto;
+                color: #fff;
+                color: black !important;
+                }
+
+     .text-muted:hover{
+         font-size : 28px;
+    text-decoration: auto;
+    color: black !important;
+
+    }
+        .text-m{
+         font-size : 28px;
+        text-decoration: auto;
+        color: #fff;
         }
-        body {
-    font-family: 'Your Font Name', sans-serif; /* 여기에 원하는 폰트를 지정하세요 */
-    font-size: 16px; /* 폰트 크기를 조절할 수도 있습니다 */
-    /* 다른 원하는 스타일도 추가 가능합니다 */
-}
+
+        .text-m:hover{
+           font-size : 28px;
+        text-decoration: auto;
+        color: #fff;
+        }
+
 
     </style>
 </head>
@@ -32,7 +60,6 @@
     <div th:replace="fragments/bodyHeader :: bodyHeader" />
 
     <main class="container">
-        <h1 class="mt-5">게시글 목록</h1>
         <ul class="list-group mt-4">
             <li class="list-group-item">
                 <div class="row">
