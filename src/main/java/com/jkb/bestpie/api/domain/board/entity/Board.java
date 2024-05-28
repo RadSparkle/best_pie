@@ -28,5 +28,7 @@ public class Board {
 
     @LastModifiedDate
     private LocalDateTime lastDate;
+
+
 }
 

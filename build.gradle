@@ -29,6 +29,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-gradle-plugin:3.2.5'
     implementation 'org.jsoup:jsoup:1.14.3'
     implementation 'org.seleniumhq.selenium:selenium-java:4.1.0'
+    implementation group: 'org.javassist', name: 'javassist', version: '3.15.0-GA'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'com.mysql:mysql-connector-j'

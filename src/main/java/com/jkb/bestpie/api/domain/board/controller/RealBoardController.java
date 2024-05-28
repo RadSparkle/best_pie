@@ -139,9 +139,19 @@ public class RealBoardController {
     //게시판 삭제 요청하는 메소드
     @PostMapping("/boards/delete/{id}")
     public String deleteBoard(@PathVariable("id") Integer id) {
+        // 해당 게시글에 연결된 댓글 조회
+        List<Comment> comments = commentRepository.findByBoardId(id);
+
+        // 댓글이 존재하는 경우 댓글 삭제
+        if (!comments.isEmpty()) {
+            commentRepository.deleteAll(comments);
+        }
+
+        // 게시글 삭제
         restTemplate.delete("http://localhost:8080/api/v1/board/delete/" + id);
         return "redirect:/boards/list";
     }
+
 
 
 
