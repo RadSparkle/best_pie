@@ -42,7 +42,6 @@ public class CommentService {
             Optional<Comment> optionalComment = commentRepository.findById(commentId);
             if (optionalComment.isPresent()) {
                 Comment comment = optionalComment.get();
-                comment.setTitle(updatedComment.getTitle());
                 comment.setContent(updatedComment.getContent());
                 commentRepository.save(comment);
                 return "댓글이 성공적으로 수정되었습니다.";

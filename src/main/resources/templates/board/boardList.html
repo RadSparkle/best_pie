@@ -4,94 +4,248 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Best Pie - List</title>
+    <!-- Dongle 폰트 링크 추가 -->
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="57x57" href="/picture/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/picture/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/picture/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/picture/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/picture/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/picture/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/picture/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/picture/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/picture/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/picture/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/picture/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/picture/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/picture/favicon-16x16.png">
+    <link rel="manifest" href="/picture/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/picture/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
     <style>
+        .container, .container-lg, .container-md, .container-sm, .container-xl {
+            max-width: 100%;
+        }
+
+        .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl {
+            margin-right: auto;
+            margin-left: auto;
+            width: 100%;
+            padding-right: 0px;
+            padding-left: 0px;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* 가로 스크롤 방지 */
+            display: flex;
+            flex-direction: column;
+        }
+
         main {
-            padding-bottom: 100px; /* 푸터 높이만큼 여백 추가 */
+            flex: 1; /* 메인 콘텐츠가 여유 공간을 차지하도록 설정 */
+            padding-bottom: 20px; /* 푸터 높이만큼 여백 추가 */
+            padding-left: 20px;
+            padding-right: 20px;
+            font-family: initial; /* 기본 폰트로 설정 */
         }
 
         .footer {
-            bottom: 0;
-            width: 100%
-             position : relative;
-          transform : translateY(-100%);
-                }
+            background-color: rgba(68, 62, 62, 1);
+            width: 100%;
+            text-align: center;
+            font-family: 'Dongle', sans-serif; /* Dongle 폰트 적용 */
+            height: 170px; /* 고정 높이 설정 */
+            margin-top: auto;
+        }
 
-                #wrapper{
-                 height: auto;
-          min-height: 100%;
-                }
+        .footer-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
 
-                body {
-            font-family: 'Your Font Name', sans-serif;
+        .footer img {
+            width: 200px;
+            padding-top: -18px;
+            margin-bottom: 13px;
+        }
+
+        .footer .lineup3 {
+            color: #fff;
+            text-align: center;
+            font-size: 20px;
+            margin: 5px 10px;
+        }
+
+        .footer .address {
+            color: #fff;
+            margin-top: 15px;
             font-size: 16px;
+            text-align: center;
         }
 
-                 .text-muted{
-                font-size : 28px;
-                text-decoration: auto;
-                color: #fff;
-                color: black !important;
-                }
-
-     .text-muted:hover{
-         font-size : 28px;
-    text-decoration: auto;
-    color: black !important;
-
-    }
-        .text-m{
-         font-size : 28px;
-        text-decoration: auto;
-        color: #fff;
+        .lineup {
+            display: block;
+            margin-right: 320px;
+            color: #fff;
+            text-align: center;
+            font-size: 20px;
+            margin: 5px 10px;
+            margin-right: 318px;
         }
 
-        .text-m:hover{
-           font-size : 28px;
-        text-decoration: auto;
-        color: #fff;
+        .lineup2 {
+            display: block;
+            margin-right: 320px;
+            color: #fff;
+            text-align: center;
+            font-size: 20px;
+            margin: 5px 10px;
+            margin-right: 340px;
         }
 
+        .header {
+            background-color: rgba(68, 62, 62, 1);
+            margin: 0;
+            width: 100%;
+            text-align: center;
+            height: 102px;
+            font-family: 'Dongle', sans-serif;
+            margin: 0;
+        }
 
+        .header img {
+            width: 150px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .text-muted {
+            width: 20px;
+        }
+
+        div .container {
+            background-color: rgba(239, 236, 212, 1);
+            margin: 0;
+            width: 100%;
+            height: 50px;
+            padding:0;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            font-family: 'Dongle', sans-serif;
+        }
+
+        .row a {
+            color: var(--color-2, #070707);
+            text-align: left;
+            font-size: 26px;
+            font-weight: 400;
+            position: relative;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .row a:hover {
+            color: var(--color-2, #559d50);
+        }
+
+        .mainmenu {
+            padding-top: 9px;
+        }
+
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .search-container input[type="text"] {
+            font-family: 'Dongle', sans-serif;
+            font-size: 20px
+            /* Adjust padding to make room for the icon */
+            background: url('/src/main/resources/static/picture/find.png') no-repeat;
+            background-position: 5px center;
+            /* Adjust position of the icon */
+            background-size: 20px;
+            /* Adjust size of the icon */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        a .findimg {
+            margin-left: 5px;
+            padding-top: 9px;
+        }
     </style>
 </head>
 <body>
 <div class="container">
-    <div th:replace="fragments/bodyHeader :: bodyHeader" />
-
-    <main class="container">
-        <ul class="list-group mt-4">
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <span>게시글번호</span>
-                    </div>
-                    <div class="col-sm-6">
-                        <span>게시글제목</span>
-                    </div>
+    <div class="header" th:replace="~{fragments/header :: header}">
+    </div>
+    <nav class="container">
+        <div class="mainmenu">
+            <div class="row" style="text-align: left">
+                <a href="/" class="text-m">전체</a>
+                <a href="/" class="text-m">실시간 베스트</a>
+                <a href="/boards/list" class="text-m">자유게시판</a>
+                <div class="search-container">
+                    <form action="">
+                        <label for="findAll" class="visually-hidden"></label>
+                        <input type="text" name="findAll" id="findAll" placeholder="Search...">
+                    </form>
+                    <a href="#" class="login">
+                        <img th:src="@{/picture/loginIcon.png}" alt="" class="findimg">
+                    </a>
                 </div>
-            </li>
-            <!-- Display each board as a list item -->
-            <li th:each="board : ${boards}" class="list-group-item">
-                <a th:href="@{'/boards/detail/' + ${board.id}}">
+            </div>
+        </div>
+        <main class="mian">
+            <ul class="list-group mt-4">
+                <li class="list-group-item">
                     <div class="row">
                         <div class="col-sm-6">
-                            <span th:text="${board.id}"></span>
+                            <span>게시글번호</span>
                         </div>
                         <div class="col-sm-6">
-                            <span th:text="${board.title}"></span>
+                            <span>게시글제목</span>
                         </div>
                     </div>
-                </a>
-            </li>
-        </ul>
-
-        <!-- Writing link -->
-        <a href="/boards/new" class="btn btn-primary mt-4">글쓰기</a>
-    </main>
-<div id="wrapper">
-    <div class="footer" th:replace="fragments/footer :: footer" />
-</div>
+                </li>
+                <!-- Display each board as a list item -->
+                <li th:each="board : ${boards}" class="list-group-item">
+                    <a th:href="@{'/boards/detail/' + ${board.id}}">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <span th:text="${board.id}"></span>
+                            </div>
+                            <div class="col-sm-6">
+                                <span th:text="${board.title}"></span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <!-- Writing link -->
+            <a href="/boards/new" class="btn btn-primary mt-4">글쓰기</a>
+        </main>
+        <div id="wrapper">
+            <!-- 폰트 적용된 푸터 불러오기 -->
+            <div class="footer" th:replace="~{fragments/footer :: footer}"></div>
+        </div>
+    </nav>
 </div>
 </body>
 </html>
