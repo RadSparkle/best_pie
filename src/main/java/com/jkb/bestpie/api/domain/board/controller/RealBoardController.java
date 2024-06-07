@@ -155,6 +155,7 @@ public class RealBoardController {
 
 
 
+
     //게시판 수정 요청하는 메소드
     @PostMapping("/boards/update/{id}")
     public String updateBoard(@PathVariable("id") Integer id, Board board) {

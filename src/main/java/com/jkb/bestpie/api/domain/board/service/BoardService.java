@@ -22,7 +22,7 @@ public class BoardService {
 
 
     public List<Board> getBoards() {
-        return boardRepository.findAll();
+        return boardRepository.findAllByOrderByIdDesc();
     }
 
     public Board getBoardById(Integer id) {
