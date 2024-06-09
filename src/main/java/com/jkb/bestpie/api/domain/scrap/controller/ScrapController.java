@@ -60,9 +60,8 @@ public class ScrapController {
 
         for(Element element : elements) {
             community.setUrl(URLDecoder.decode(element.select(scrapeConfig.getClienUrlCssQuery()).attr("href"), StandardCharsets.UTF_8));
-            community.setTitle(element.select(scrapeConfig.getClienUrlCssQuery()).attr("title"));
+            community.setTitle(element.select(scrapeConfig.getClienTitleCssQuery()).attr("title"));
             community.setSiteName(CLIEN);
-
             scrapService.saveScrap(community);
         }
     }
