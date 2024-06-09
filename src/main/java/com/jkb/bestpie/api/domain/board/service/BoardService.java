@@ -19,24 +19,19 @@ public class BoardService {
     @PersistenceContext
     private EntityManager entityManager;
 
-
-
-    public List<Board> getBoards() {
+    public List<Board> getPosts() {
         return boardRepository.findAllByOrderByIdDesc();
     }
 
-    public Board getBoardById(Integer id) {
+    public Board getPostById(Integer id) {
         return boardRepository.findById(id).orElse(null);
     }
 
-    public String postBoard(Board board) {
-        // 게시글을 저장하고 저장된 게시글의 ID를 반환합니다.
-        Board savedBoard = boardRepository.save(board);
-        // 저장된 엔티티의 ID를 추출하여 반환합니다.
-        return "Board saved with ID: " + savedBoard.getId();
+    public String savePost(Board board) {
+        return "Board saved with ID: " + boardRepository.save(board).getId();
     }
 
-    public String updateBoard(Integer id, Board board) {
+    public String updatePost(int id, Board board) {
         Board existingBoard = boardRepository.findById(id).orElse(null);
         if (existingBoard == null) {
             return "게시글을 찾을 수 없습니다.";
@@ -49,8 +44,7 @@ public class BoardService {
         return "게시글이 성공적으로 수정되었습니다.";
     }
 
-    public String deleteBoard(Integer id) {
-
+    public String deletePost(int id) {
         boardRepository.deleteById(id);
         return "게시글이 성공적으로 삭제되었습니다";
     }

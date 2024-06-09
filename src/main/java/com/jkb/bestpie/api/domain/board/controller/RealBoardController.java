@@ -152,18 +152,12 @@ public class RealBoardController {
         return "redirect:/boards/list";
     }
 
-
-
-
-
     //게시판 수정 요청하는 메소드
     @PostMapping("/boards/update/{id}")
     public String updateBoard(@PathVariable("id") Integer id, Board board) {
         restTemplate.put("http://localhost:8080/api/v1/board/update/" + id, board);
         return "redirect:/boards/list";
     }
-
-
 
     //게시판 수정페이지 요청받는 메소드
     @GetMapping("/boards/edit/{id}")
@@ -178,16 +172,4 @@ public class RealBoardController {
         modelAndView.setViewName("board/boardEdit"); // Thymeleaf 템플릿 파일의 이름 (board/boardEdit.html)
         return modelAndView;
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }
